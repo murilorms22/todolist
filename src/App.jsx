@@ -9,25 +9,37 @@ function App() {
   return (
     <>
       <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <h1>DFE2 | React ToDoList</h1>
+        <p>Crie e organize suas tarefas!</p>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+      <div>
+        <label>Título</label>
+        <input type="text" name="inputTitulo" id="inputTitulo" />
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <div>
+        <label>Texto</label>
+        <textarea name="inputTitulo" id="inputTitulo" />
+      </div>
+      <div>
+        <button>+ Nova tarefa</button>
+      </div>
+      <div>
+        <h2>Lista de Tarefas:</h2>
+      </div>
+      <div>
+        <h2>1º - 'nomeTarefa'</h2>
+        <button>x</button> <button>edit</button> <button>etapa</button>
+        <details>
+          <summary>Descrição | 'nº' etapas</summary>
+          <p>Descrição (input textarea)</p>
+          <details>
+            <summary>if existe Etapas</summary>
+            <ol>
+              <li>teste. número esquerda e x para excluir a direita</li> <button>x</button>
+            </ol>
+          </details>
+        </details>
+      </div>
     </>
   )
 }
