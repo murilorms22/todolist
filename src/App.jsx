@@ -3,7 +3,6 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import ToDoList from './components/toDoList/toDoList'
-import Titulos from './components/Titulos/Titulos'
 import Inputs from './components/Inputs/Inputs'
 
 function App() {
@@ -12,25 +11,39 @@ function App() {
   const [inputTexto, setInputTexto] = useState('');
 
   const adicionarTarefa = () => {
-    console.log(tarefas)
-    setTarefas([...tarefas, setTarefas])
+
+    const novaTarefa = {
+      id: Date.now,
+      titulo: inputTitulo,
+      texto: inputTexto 
+    }
+
+    setTarefas([...tarefas, novaTarefa])
     setInputTitulo('')
     setInputTexto('');
   };
 
   return (
     <>
-      <Titulos/>
+      <h1>DFE2 | React ToDoList</h1>  
+      <p>Crie e organize suas tarefas!</p>
+
       <Inputs
         inputTitulo={inputTitulo}
         setInputTitulo={setInputTitulo}
         inputTexto={inputTexto}
         setInputTexto={setInputTexto}
       />
+
       <div>
         <button onClick={adicionarTarefa}>+ Nova tarefa</button>
       </div>        
-      {tarefas.lenght > 0 && <ToDoList tarefas={tarefas} />}
+      {tarefas.map(tarefa => (
+        <div key={tarefa.id}>
+          <p>{tarefa.titulo}</p>
+          <p>{tarefa.texto}</p>
+        </div>
+      ))}
     </>
   )
 }

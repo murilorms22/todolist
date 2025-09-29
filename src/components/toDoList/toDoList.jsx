@@ -1,4 +1,5 @@
 import React from 'react'
+import ItemTarefa from '../ItemTarefa/ItemTarefa';
 
 
 
@@ -8,20 +9,16 @@ function ToDoList({ nomeTarefa, numEtapas, descricao }) {
       <div>
         <h2>Lista de Tarefas:</h2>
       </div>
-      <div>
-        <h2>1º - ${nomeTarefa}</h2>
-        <button>x</button> <button>edit</button> <button>etapa</button>
-        <details>
-          <summary>Descrição | ${numEtapas} etapas</summary>
-          <p>Descrição ${descricao}</p>
-          <details>
-            <summary>if existe Etapas</summary>
-            <ol>
-              <li>teste. número esquerda e x para excluir a direita</li> <button>x</button>
-            </ol>
-          </details>
-        </details>
-      </div>
+      {tarefas.map((tarefa) => {
+        <ItemTarefa
+          key={ItemTarefa.id}
+          tarefa={tarefa}
+          removerTarefa={removerTarefa}
+          toggleEtapa={toggleEtapa}
+          />
+          
+      })}
+      
       </>
   )
 }
