@@ -13,6 +13,7 @@ function App() {
 
   const [inputTitulo, setInputTitulo] = useState('');
   const [inputTexto, setInputTexto] = useState('');
+  const [editId, setEditId] = useState(null);
 
   const adicionarTarefa = () => {
 
@@ -23,7 +24,8 @@ function App() {
       const novaTarefa = {
         id: Date.now(),
         titulo: inputTitulo,
-        texto: inputTexto 
+        texto: inputTexto,
+        steps: []
       }
       
       setTarefas([...tarefas, novaTarefa])
@@ -31,6 +33,11 @@ function App() {
       setInputTexto('');
     }
   };
+
+  const removerTarefa = (id) => {
+    setTarefas(tarefas.filter((tarefa) => tarefa.id !== id));
+    console.log('teste', id)
+  }
 
   useEffect(() => {
     localStorage.setItem("tarefas", JSON.stringify(tarefas))    
@@ -55,7 +62,7 @@ function App() {
       </div>      
 
       {tarefas.length > 0 && (
-        <ToDoList tarefas={tarefas} />
+        <ToDoList tarefas={tarefas} removerTarefa={removerTarefa}/>
       )}
 
     </>

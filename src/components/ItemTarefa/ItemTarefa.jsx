@@ -2,8 +2,7 @@ import React from 'react'
 import './ItemTarefa.css'
 import './googleIcons.css'
 
-
-  function ItemTarefa({ tarefa }) {
+  function ItemTarefa({ tarefa, onDelete }) {
 
       return (
         <div className='cardList'>
@@ -11,7 +10,7 @@ import './googleIcons.css'
       <p>{tarefa.texto}</p>
       
       <div className='btns'>
-      <button className='delete'><span className='material-icons'>delete</span></button>
+      <button className='delete' onClick={onDelete}><span className='material-icons'>delete</span></button>
       <button className='edit'><span className='material-icons'>edit</span></button>
       <button className='add'><span className='material-icons'>add</span></button>
       </div>
