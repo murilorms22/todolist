@@ -1,8 +1,12 @@
 import React from 'react'
+import './ItemTarefa.css'
 
-function ItemTarefa() {
+  function ItemTarefa({ tarefa }) {
   return (
-    <div>ItemTarefa</div>
+    <div className='cardList'>
+      <h1>{tarefa.titulo}</h1>
+      <p>{tarefa.texto}</p>
+    </div>
   )
 }
 

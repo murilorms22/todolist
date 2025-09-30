@@ -6,14 +6,18 @@ import ToDoList from './components/toDoList/toDoList'
 import Inputs from './components/Inputs/Inputs'
 
 function App() {
-  const [tarefas, setTarefas] = useState([]);
+  const [tarefas, setTarefas] = useState(() => {
+    let tarefasAntigas = localStorage.getItem("tarefas");
+    return tarefasAntigas ? JSON.parse(tarefasAntigas) : []; 
+  });
+
   const [inputTitulo, setInputTitulo] = useState('');
   const [inputTexto, setInputTexto] = useState('');
 
   const adicionarTarefa = () => {
 
     const novaTarefa = {
-      id: Date.now,
+      id: Date.now(),
       titulo: inputTitulo,
       texto: inputTexto 
     }
@@ -23,10 +27,16 @@ function App() {
     setInputTexto('');
   };
 
+  useEffect(() => {
+    localStorage.setItem("tarefas", JSON.stringify(tarefas))    
+  }, [tarefas]);
+
   return (
     <>
+    <div className='header'>
       <h1>DFE2 | React ToDoList</h1>  
       <p>Crie e organize suas tarefas!</p>
+    </div>
 
       <Inputs
         inputTitulo={inputTitulo}
@@ -37,13 +47,12 @@ function App() {
 
       <div>
         <button onClick={adicionarTarefa}>+ Nova tarefa</button>
-      </div>        
-      {tarefas.map(tarefa => (
-        <div key={tarefa.id}>
-          <p>{tarefa.titulo}</p>
-          <p>{tarefa.texto}</p>
-        </div>
-      ))}
+      </div>      
+
+      {tarefas.length > 0 && (
+        <ToDoList tarefas={tarefas} />
+      )}
+
     </>
   )
 }

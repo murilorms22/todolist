@@ -1,4 +1,24 @@
-.campo{
+* {
+    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+.cardInputs input, .cardInputs textarea {
+  height: 50px;
+}
+
+.cardInputs{
   display: flex;
   flex-direction: column;
+  gap: 20px;
+  padding-block: 50px;
+}
+
+.cardInputs div {
+  display: flex;
+  flex-direction: column;
+}
+
+.titulo {
+  font-size: 25px;
+  font-weight: 700;
 }

@@ -3,20 +3,19 @@ import ItemTarefa from '../ItemTarefa/ItemTarefa';
 
 
 
-function ToDoList({ nomeTarefa, numEtapas, descricao }) {
+function ToDoList({ tarefas }) {
   return (
     <>
       <div>
         <h2>Lista de Tarefas:</h2>
       </div>
       {tarefas.map((tarefa) => {
+        return (
         <ItemTarefa
-          key={ItemTarefa.id}
+          key={tarefa.id}
           tarefa={tarefa}
-          removerTarefa={removerTarefa}
-          toggleEtapa={toggleEtapa}
           />
-          
+          )
       })}
       
       </>

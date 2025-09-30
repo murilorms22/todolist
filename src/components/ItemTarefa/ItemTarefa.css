@@ -1,0 +1,7 @@
+.cardList {
+  background-color: aquamarine;
+  padding-block: 10px;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.384);
+  margin-bottom: 10px;
+}
