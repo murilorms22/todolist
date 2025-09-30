@@ -16,15 +16,20 @@ function App() {
 
   const adicionarTarefa = () => {
 
-    const novaTarefa = {
-      id: Date.now(),
-      titulo: inputTitulo,
-      texto: inputTexto 
-    }
+    if(!inputTitulo || !inputTexto){
+      return;
+    } else {
 
-    setTarefas([...tarefas, novaTarefa])
-    setInputTitulo('')
-    setInputTexto('');
+      const novaTarefa = {
+        id: Date.now(),
+        titulo: inputTitulo,
+        texto: inputTexto 
+      }
+      
+      setTarefas([...tarefas, novaTarefa])
+      setInputTitulo('')
+      setInputTexto('');
+    }
   };
 
   useEffect(() => {
@@ -46,7 +51,7 @@ function App() {
       />
 
       <div>
-        <button onClick={adicionarTarefa}>+ Nova tarefa</button>
+        <button className='addTarefa' onClick={adicionarTarefa}>+ Nova tarefa</button>
       </div>      
 
       {tarefas.length > 0 && (

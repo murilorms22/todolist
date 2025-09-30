@@ -15,9 +15,8 @@ function ToDoList({ tarefas }) {
           key={tarefa.id}
           tarefa={tarefa}
           />
-          )
+        )
       })}
-      
       </>
   )
 }

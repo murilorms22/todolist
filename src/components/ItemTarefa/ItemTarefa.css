@@ -1,7 +1,26 @@
 .cardList {
-  background-color: aquamarine;
+  background-color: #213547;
   padding-block: 10px;
   border-radius: 20px;
-  border: 1px solid rgba(0, 0, 0, 0.384);
+  border: 1px solid rgba(0, 0, 0, 0.61);
   margin-bottom: 10px;
+  color: white;
+}
+
+.btns {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.delete {
+  background: rgb(247, 53, 46);
+}
+
+.edit {
+  background-color: aqua;
+}
+
+.add {
+  background-color: rgb(66, 245, 66);
 }
