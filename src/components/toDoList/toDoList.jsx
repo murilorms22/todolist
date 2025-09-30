@@ -1,7 +1,7 @@
 import React from 'react'
 import ItemTarefa from '../ItemTarefa/ItemTarefa';
 
-function ToDoList({ tarefas, removerTarefa }) {
+function ToDoList({ tarefas, removerTarefa, editarTarefa }) {
   return (
     <>
       <div>
@@ -13,6 +13,7 @@ function ToDoList({ tarefas, removerTarefa }) {
           key={tarefa.id}
           tarefa={tarefa}
           onDelete={() => removerTarefa(tarefa.id)}
+          onEdit={() => editarTarefa(tarefa)}
           />
         )
       })}

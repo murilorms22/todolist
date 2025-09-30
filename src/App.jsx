@@ -39,6 +39,22 @@ function App() {
     console.log('teste', id)
   }
 
+  const editTarefa = (tarefa) => {
+    setInputTitulo(tarefa.titulo),
+    setInputTexto(tarefa.texto),
+    setEditId(tarefa.id)
+  }
+
+  const salvarEdicao = () => {
+    setTarefas((array) => 
+      array.map((tarefa) => tarefa.id == editId ? {...tarefa, titulo: inputTitulo, texto: inputTexto} : tarefa)
+    );
+
+    setInputTitulo('');
+    setInputTexto('');
+    setEditId(null);
+  };
+
   useEffect(() => {
     localStorage.setItem("tarefas", JSON.stringify(tarefas))    
   }, [tarefas]);
@@ -58,11 +74,13 @@ function App() {
       />
 
       <div>
-        <button className='addTarefa' onClick={adicionarTarefa}>+ Nova tarefa</button>
+        <button className='addTarefa' onClick={adicionarTarefa}>
+          {editId ? "Salvar Alterações" : "+ Nova tarefa"}
+        </button>
       </div>      
 
       {tarefas.length > 0 && (
-        <ToDoList tarefas={tarefas} removerTarefa={removerTarefa}/>
+        <ToDoList tarefas={tarefas} removerTarefa={removerTarefa} editarTarefa={editTarefa}/>
       )}
 
     </>
