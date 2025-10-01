@@ -18,6 +18,7 @@ function App() {
   const adicionarTarefa = () => {
 
     if(!inputTitulo || !inputTexto){
+      alert("Uma nova tarefa somente pode ser cadastrada após o preenchimento dos campos TÍTULO e TEXTO.");
       return;
     } else {
 
@@ -46,18 +47,30 @@ function App() {
   }
 
   const salvarEdicao = () => {
-    setTarefas((array) => 
-      array.map((tarefa) => tarefa.id == editId ? {...tarefa, titulo: inputTitulo, texto: inputTexto} : tarefa)
-    );
+   
+    const tarefaOriginal = tarefas.find((t) => t.id === editId);
 
-    setInputTitulo('');
-    setInputTexto('');
-    setEditId(null);
-  };
+    if (tarefaOriginal.titulo == inputTitulo && tarefaOriginal.texto == inputTexto) {
+      setInputTitulo('')
+      setInputTexto('')
+      setEditId(null)
+      return;
+    }
+
+    setTarefas((tarefas) => [...tarefas.filter((t) => t.id !== editId), {id: Date.now(), titulo: inputTitulo, texto: inputTexto, steps: tarefaOriginal.steps}]);
+
+      setInputTitulo('')
+      setInputTexto('')
+      setEditId(null)
+
+
+    }
+
 
   useEffect(() => {
     localStorage.setItem("tarefas", JSON.stringify(tarefas))    
   }, [tarefas]);
+
 
   return (
     <>
@@ -74,8 +87,8 @@ function App() {
       />
 
       <div>
-        <button className='addTarefa' onClick={adicionarTarefa}>
-          {editId ? "Salvar Alterações" : "+ Nova tarefa"}
+        <button className='addTarefa' onClick={editId ? salvarEdicao : adicionarTarefa}>
+          {editId ? "Salvar Alterações" : "+ Nova Tarefa"}
         </button>
       </div>      
 
