@@ -1,11 +1,12 @@
 import React from 'react'
 import ItemTarefa from '../ItemTarefa/ItemTarefa';
+import './ToDoList.css'
 
 function ToDoList({ tarefas, removerTarefa, editarTarefa }) {
   return (
     <>
       <div>
-        <h2>Lista de Tarefas:</h2>
+        <h2 className='tituloToDoList'>Lista de Tarefas:</h2>
       </div>
       {tarefas.map((tarefa) => {
         return (
@@ -14,6 +15,7 @@ function ToDoList({ tarefas, removerTarefa, editarTarefa }) {
           tarefa={tarefa}
           onDelete={() => removerTarefa(tarefa.id)}
           onEdit={() => editarTarefa(tarefa)}
+          onAddEtapa={() => addEtapa(tarefa.id, nome)}
           />
         )
       })}

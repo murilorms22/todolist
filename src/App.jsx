@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import ToDoList from './components/toDoList/toDoList'
+import ToDoList from './components/toDoList/ToDoList'
 import Inputs from './components/Inputs/Inputs'
 
 function App() {
@@ -63,7 +63,35 @@ function App() {
       setInputTexto('')
       setEditId(null)
 
+    }
 
+    const addEtapa = (tarefaId, texto) => {
+      if(!texto) return;
+
+      setTarefas((prev) => {
+        prev.map((tarefa) => {
+          tarefa.id == tarefaId
+          ? {...tarefa,
+            steps: [
+              ...tarefa.steps,
+              { id: Date.now(), texto: texto }
+            ]
+          }
+          : tarefa
+        })
+      })
+    }
+
+    const removeEtapa = (tarefaId, stepId) => {
+      setTarefas((prev) => {
+        prev.map((tarefa) => {
+          tarefa.id == tarefaId
+          ? {...tarefa,
+            steps: tarefa.steps.filter((s) => s.id !== stepId)
+          }
+          : tarefa
+        })
+      })
     }
 
 
@@ -93,7 +121,13 @@ function App() {
       </div>      
 
       {tarefas.length > 0 && (
-        <ToDoList tarefas={tarefas} removerTarefa={removerTarefa} editarTarefa={editTarefa}/>
+        <ToDoList
+        tarefas={tarefas}
+        removerTarefa={removerTarefa}
+        editarTarefa={editTarefa}
+        addEtapa={addEtapa}
+        removeEtapa={removeEtapa}
+        />
       )}
 
     </>

@@ -8,7 +8,7 @@ function Inputs({ inputTitulo, setInputTitulo, inputTexto, setInputTexto }) {
 
     <div>
         <p className='titulo'>Título</p>
-        <input 
+        <textarea 
         type="text" 
         value={inputTitulo} 
         onChange={(e) => setInputTitulo(e.target.value)}/>

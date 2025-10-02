@@ -2,7 +2,7 @@
     font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
-.cardInputs input, .cardInputs textarea {
+.cardInputs textarea {
   height: 50px;
 }
 
@@ -21,4 +21,11 @@
 .titulo {
   font-size: 25px;
   font-weight: 700;
+}
+
+textarea {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 15px;
 }
