@@ -2,7 +2,7 @@ import React from 'react'
 import ItemTarefa from '../ItemTarefa/ItemTarefa';
 import './ToDoList.css'
 
-function ToDoList({ tarefas, removerTarefa, editarTarefa }) {
+function ToDoList({ tarefas, removerTarefa, editarTarefa, addStep, removeStep }) {
   return (
     <>
       <div>
@@ -15,7 +15,8 @@ function ToDoList({ tarefas, removerTarefa, editarTarefa }) {
           tarefa={tarefa}
           onDelete={() => removerTarefa(tarefa.id)}
           onEdit={() => editarTarefa(tarefa)}
-          onAddEtapa={() => addEtapa(tarefa.id, nome)}
+          onAddStep={(texto) => addStep(tarefa.id, texto)}
+          onRemoveStep={(stepId) => removeStep(tarefa.id, stepId)}
           />
         )
       })}

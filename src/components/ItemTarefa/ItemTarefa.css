@@ -24,3 +24,31 @@
 .add {
   background-color: rgb(66, 245, 66);
 }
+
+.step {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin-inline: auto;
+  gap: 10px;
+}
+
+.step input {
+  background-color: white;
+  padding: 10px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 500;
+  color: black;
+}
+
+.textoStep {
+  font-size: 20px;
+  font-weight: 500;
+  width: 50%;
+  margin-inline: auto;
+}
+
+ul {
+  list-style: decimal;
+}

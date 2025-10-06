@@ -47,7 +47,11 @@ function App() {
   }
 
   const salvarEdicao = () => {
-   
+    if(!inputTitulo || !inputTexto){
+      alert("Uma nova tarefa somente pode ser cadastrada após o preenchimento dos campos TÍTULO e TEXTO.");
+      return;
+    } else {
+
     const tarefaOriginal = tarefas.find((t) => t.id === editId);
 
     if (tarefaOriginal.titulo == inputTitulo && tarefaOriginal.texto == inputTexto) {
@@ -63,35 +67,35 @@ function App() {
       setInputTexto('')
       setEditId(null)
 
-    }
+    }}
 
-    const addEtapa = (tarefaId, texto) => {
-      if(!texto) return;
+    const addStep = (tarefaId, stepTexto) => {
+      if(!stepTexto) return;
 
-      setTarefas((prev) => {
-        prev.map((tarefa) => {
+      setTarefas((prev) =>  //passa por cada tarefa, atribuindo todas tarefas antigas + criando um novo step que recebe um id aleatorio e um texto novo para a certa
+        prev.map((tarefa) => 
           tarefa.id == tarefaId
           ? {...tarefa,
             steps: [
               ...tarefa.steps,
-              { id: Date.now(), texto: texto }
+              { id: Date.now(), texto: stepTexto }
             ]
           }
           : tarefa
-        })
-      })
+        )
+      )
     }
 
-    const removeEtapa = (tarefaId, stepId) => {
-      setTarefas((prev) => {
-        prev.map((tarefa) => {
+    const removeStep = (tarefaId, stepId) => {
+      setTarefas((prev) => 
+        prev.map((tarefa) => 
           tarefa.id == tarefaId
           ? {...tarefa,
             steps: tarefa.steps.filter((s) => s.id !== stepId)
           }
           : tarefa
-        })
-      })
+        )
+      )
     }
 
 
@@ -125,8 +129,8 @@ function App() {
         tarefas={tarefas}
         removerTarefa={removerTarefa}
         editarTarefa={editTarefa}
-        addEtapa={addEtapa}
-        removeEtapa={removeEtapa}
+        addStep={addStep}
+        removeStep={removeStep}
         />
       )}
 
