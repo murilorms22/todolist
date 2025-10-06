@@ -39,17 +39,26 @@ import './googleIcons.css'
 
           <br />
 
-          <p>
-            {tarefa.steps.length != 0 ? `${tarefa.steps.length}  etapa(s)` : ''}
+          <p className='numEtapas'> 
+            {tarefa.steps.length != 0 ? `${tarefa.steps.length}  etapa(s)` : 'Não há etapas'}
           </p>
 
           {!tarefa.steps || tarefa.steps.length == 0 
-          ? "Não há etapas"
+          ? ''
           : (
           
           <ul>
             {tarefa.steps.map((step) => (
-              <li className='textoStep' key={step.id}>{step.texto}</li>
+              <li className='textoStep' key={step.id}>
+                <div className='contentSteps'>
+                <span>{step.texto}</span>
+                <div className='btns'>
+                  <button className='remove' onClick={() => onRemoveStep(step.id)}>
+                    <span className='material-icons'>check</span>
+                 </button>
+                </div>
+                </div>
+              </li>
             ))}
           </ul>)
           }

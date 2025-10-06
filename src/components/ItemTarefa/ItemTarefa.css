@@ -45,10 +45,38 @@
 .textoStep {
   font-size: 20px;
   font-weight: 500;
-  width: 50%;
+  width: 70%;
   margin-inline: auto;
+}
+
+.numEtapas {
+  font-size: 25px;
+  font-weight: 700;
 }
 
 ul {
   list-style: decimal;
+}
+
+ul li {
+  margin-bottom: 15px;
+}
+
+li span {
+  text-align: start;
+}
+
+.contentSteps {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin-inline: auto;
+}
+
+.remove {
+  background-color: rgb(66, 245, 66);
+  width: 50px;
+  height: 50px;
+  padding: 0px;
 }
